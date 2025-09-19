@@ -52,7 +52,7 @@ export function ContactMeDialog() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: -10 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="w-[420px] lg:w-[620px] p-5 bg-neutral-900 text-white rounded-xl shadow-xl border border-neutral-700"
+          className="w-[380px] lg:w-[620px] p-5 bg-neutral-900 text-white rounded-xl shadow-xl border border-neutral-700"
         >
           <SocialMediaTab />
           {/* Tabs */}
