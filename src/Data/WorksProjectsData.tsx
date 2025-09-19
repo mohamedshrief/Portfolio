@@ -1,9 +1,9 @@
 import cosmos from "../assets/Projects/cosmoslanding.png";
-import vs from "../assets/projects/vslanding.png";
-import crud from "../assets/projects/crudlanding.png";
-import meals from "../assets/projects/mealslanding.png";
-import advancedNextRouting from "../assets/projects/advancedNextRouting.png";
-import nextPosts from "../assets/projects/nextPosts.png";
+import vs from "../assets/Projects/vslanding.png";
+import crud from "../assets/Projects/crudlanding.png";
+import meals from "../assets/Projects/mealslanding.png";
+import advancedNextRouting from "../assets/Projects/advancedNextRouting.png";
+import nextPosts from "../assets/Projects/nextPosts.png";
 
 export const projectsData = [
   {
