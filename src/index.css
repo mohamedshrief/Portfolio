@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
+
+/* @import url("https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap"); */
+
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/effect-coverflow";
+@import "swiper/css/pagination";
+
+@layer base {
+  html {
+    font-family: "Rajdhani", sans-serif;
+    scroll-padding-top: 100px;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #7c3aed, #0891b2);
+  }
+}
+
+/* .dotted {
+  font-family: "Raleway Dots", sans-serif;
+} */
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(to right, #8b5cf6, #a855f7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-text {
+    font-family: "Orbitron", monospace;
+    font-weight: 900;
+  }
+
+  .about-title {
+    background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    letter-spacing: -0.02em;
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  .about-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #8b5cf6, #06b6d4, #7c3aed);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+
+  .about-subtitle {
+    color: #06b6d4;
+    text-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .about-subtitle .star {
+    color: #8b5cf6;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    animation: starTwinkle 2s ease-in-out infinite;
+  }
+
+  @keyframes starTwinkle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+}
+
+/* ---------------- Variables ---------------- */
+:root {
+  --cover-bg: #0f172a;
+  --slide-bg: #0b1220;
+  --accent: #06b6d4;
+  --text: #e6eef6;
+  --primary: #8b5cf6;
+  --secondary: #06b6d4;
+  --gradient: linear-gradient(135deg, #8b5cf6, #06b6d4, #7c3aed);
+}
+
+/* Section container */
+.coverflow-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+  border-radius: 50px;
+  overflow: hidden;
+  background: transparent;
+  animation: slideInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Swiper */
+.myCoverflowSwiper {
+  padding: 40px 0;
+  overflow: visible;
+}
+.swiper-wrapper {
+  transition-timing-function: ease-out;
+}
+.swiper-slide {
+  transition: transform 0.3s ease;
+}
+.swiper-slide-duplicate {
+  display: block !important;
+}
+.swiper-slide-duplicate-prev,
+.swiper-slide-duplicate-next {
+  opacity: 1 !important;
+}
+
+/* Slide container */
+.coverflow-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: grab;
+  transform: scale(0.9);
+  opacity: 0.7;
+  width: 100%;
+  max-width: 360px;
+}
+.coverflow-slide:hover {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+/* Inner slide */
+.slide-inner {
+  width: 100%;
+  height: 350px;
+  background: transparent;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  padding: 10px;
+  z-index: 20;
+}
+
+/* Image */
+.slide-inner img {
+  border-radius: 50px;
+  display: block;
+  width: 100%;
+  height: calc(100% - 80px);
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(1.2) contrast(1.2);
+  border: 2px solid #7c3aed;
+  z-index: 25;
+  animation: borderGlow 1.5s ease-in-out infinite;
+}
+.slide-inner:hover img {
+  filter: brightness(1.1) contrast(1.1);
+  transform: scale(1.06);
+}
+
+/* Border animation */
+@keyframes borderGlow {
+  0%,
+  100% {
+    border-color: #7c3aed;
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+  }
+  25%,
+  50% {
+    border-color: #06b6d4;
+    box-shadow: 0 0 20px rgba(16, 146, 169, 0.8);
+  }
+}
+
+/* Caption */
+.slide-caption {
+  padding: 14px 16px;
+  font-size: 22px;
+  font-weight: 900;
+  position: relative;
+  z-index: 30;
+  transition: all 300ms ease;
+  margin-top: 16px;
+}
+.slide-inner:hover .slide-caption {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Active slide */
+.swiper-slide-active .slide-inner {
+  transform: translateY(-8px) scale(1.02);
+  animation: activeSlide 4s ease-in-out infinite;
+}
+@keyframes activeSlide {
+  0%,
+  100% {
+    transform: translateY(-8px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.05);
+  }
+}
+.swiper-slide-active .slide-inner img {
+  filter: brightness(1.2) contrast(1.02);
+}
+
+/* Neighbors */
+.swiper-slide-prev .slide-inner,
+.swiper-slide-next .slide-inner {
+  filter: saturate(0.8) contrast(0.9);
+  transform: scale(0.85);
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .coverflow-section {
+    padding: 16px;
+  }
+  .coverflow-slide {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .slide-inner {
+    height: 420px;
+  } /* أكبر للموبايل */
+  .slide-caption {
+    font-size: 18px;
+    padding: 12px 14px;
+  }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .coverflow-slide {
+    max-width: 320px;
+  }
+  .slide-inner {
+    height: 380px;
+  }
+  .slide-caption {
+    font-size: 20px;
+    padding: 14px 16px;
+  }
+}
+@media (min-width: 1024px) {
+  .coverflow-slide {
+    max-width: 360px;
+  }
+  .slide-inner {
+    height: 420px;
+  }
+  .slide-caption {
+    font-size: 22px;
+    padding: 14px 16px;
+  }
+}
+
+/* Accessibility */
+.swiper-container :focus,
+.swiper-slide :focus {
+  outline: 3px solid rgba(139, 92, 246, 0.3);
+  outline-offset: 3px;
+}
+
+/* Entrance animation */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.custom-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* width: !important; */
+  /* height: 100vh !important; */
+
+  /* Ensure particles are behind other content */
+}
+
+.text-border-cyan {
+  -webkit-text-stroke: 1px #b692d8; /* cyan-400 */
+  color: transparent; /* يخلي النص نفسه شفاف والـ stroke هو اللي يبان */
+}
