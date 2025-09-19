@@ -1,4 +1,4 @@
-import cosmos from "../assets/projects/cosmoslanding.png";
+import cosmos from "../assets/Projects/cosmoslanding.png";
 import vs from "../assets/projects/vslanding.png";
 import crud from "../assets/projects/crudlanding.png";
 import meals from "../assets/projects/mealslanding.png";
