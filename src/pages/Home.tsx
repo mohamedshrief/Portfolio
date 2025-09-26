@@ -6,7 +6,7 @@ import me from "../assets/portfolio.jpg";
 import { useState, useEffect } from "react";
 import ContactMe from "@/components/ui/ContactMe";
 // import ParticlesScreenSaver from "@/components/ParticlesScreenSaver";
-import { profileSVGPath } from "@/Data/svgPaths";
+// import { profileSVGPath } from "@/Data/svgPaths";
 
 /**
  * مكون تأثير الكتابة الآلية
@@ -117,24 +117,36 @@ export default function Home() {
                   className="absolute inset-0 z-20"
                   initial={{ opacity: 1 }}
                   animate={{ opacity: 0 }} // اختفاء تدريجي
-                  transition={{ duration: 3, delay: 2 }}
+                  transition={{ duration: 1, delay: 1 }}
                 >
                   {/* أيقونة SVG (الشخصية) */}
                   <svg
                     className="w-full h-full"
-                    viewBox="0 0 3000 3000" // اضبط الأبعاد حسب ملفك
-                    fill="url(#gradient)"
+                    viewBox="0 0 200 200"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    {/* الشخصية */}
+                    {/* دايرة */}
                     <motion.path
-                      d={profileSVGPath}
+                      d="M180 100 A80 80 0 1 0 20 100 A80 80 0 1 0 180 100"
                       stroke="url(#gradient)"
-                      strokeWidth="4"
+                      strokeWidth="6"
                       fill="none"
-                      initial={{ pathLength: 0, scale: 0 }} // يبدأ من غير رسم
-                      animate={{ pathLength: 1, scale: 1 }} // يظهر كامل
-                      transition={{ duration: 3 }}
+                      initial={{ pathLength: 0, scale: 0 }}
+                      animate={{ pathLength: 1, scale: 1 }}
+                      transition={{ duration: 1 }}
+                    />
+
+                    {/* حرف M */}
+                    <motion.path
+                      d="M60 140 L60 40 L100 120 L140 40 L140 140"
+                      stroke="url(#gradient)"
+                      strokeWidth="10"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      initial={{ pathLength: 0, scale: 0 }}
+                      animate={{ pathLength: 1, scale: 1 }}
+                      transition={{ duration: 1.2, delay: 0.5 }}
                     />
 
                     {/* تعريف التدرج اللوني */}
@@ -160,7 +172,7 @@ export default function Home() {
                   className="absolute inset-0 z-10"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }} // ظهور تدريجي
-                  transition={{ duration: 2, delay: 3 }}
+                  transition={{ duration: 1, delay: 1 }}
                 >
                   <img
                     src={me}
