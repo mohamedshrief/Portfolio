@@ -8,7 +8,7 @@
  * - دعم السحب واللمس للتنقل
  */
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Autoplay } from "swiper/modules";
+import { EffectCoverflow } from "swiper/modules";
 // استيراد صور المستخدم
 import portfolio1 from "../assets/portfolio.jpg";
 import portfolio2 from "../assets/portfolio2.jpg";
@@ -39,7 +39,7 @@ export default function CoverflowCarousel() {
           }, 500);
         }}
         key={slides.length} // إعادة تهيئة Swiper عند تغيير عدد الشرائح
-        modules={[EffectCoverflow, Autoplay]} // الوحدات المطلوبة
+        modules={[EffectCoverflow]} // الوحدات المطلوبة
         effect="coverflow" // تأثير Coverflow ثلاثي الأبعاد
         grabCursor={true} // تغيير المؤشر عند السحب
         centeredSlides={true} // توسيط الشرائح
@@ -47,12 +47,12 @@ export default function CoverflowCarousel() {
         loop={true} // تكرار الشرائح
         watchSlidesProgress={true} // مراقبة تقدم الشرائح
         // إعدادات التشغيل التلقائي
-        autoplay={{
-          delay: 2000, // تأخير 2 ثانية بين الشرائح
-          disableOnInteraction: false, // عدم إيقاف التشغيل عند التفاعل
-          pauseOnMouseEnter: false, // عدم إيقاف التشغيل عند التمرير
-          stopOnLastSlide: false, // عدم التوقف عند الشريحة الأخيرة
-        }}
+        // autoplay={{
+        //   delay: 2000, // تأخير 2 ثانية بين الشرائح
+        //   disableOnInteraction: false, // عدم إيقاف التشغيل عند التفاعل
+        //   pauseOnMouseEnter: false, // عدم إيقاف التشغيل عند التمرير
+        //   stopOnLastSlide: false, // عدم التوقف عند الشريحة الأخيرة
+        // }}
         simulateTouch={true} // محاكاة اللمس
         touchStartPreventDefault={false} // عدم منع اللمس الافتراضي
         // إعدادات تأثير Coverflow
