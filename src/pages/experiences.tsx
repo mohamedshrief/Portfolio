@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { experiences } from "@/Data/data";
 import ExperienceCard from "@/components/ExperienceCard";
-import me from "../assets/portfolio.jpg";
+// import me from "../assets/portfolio.jpg";
 // import Title from "@/components/ui/Title";
 // import FadeIn from "@/components/animations/fadeIn";
 // import FadeInWithExpantion from "@/components/animations/FadeInWithExpantion";
