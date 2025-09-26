@@ -32,7 +32,7 @@ export default function ParticlesScreenSaver() {
           onHover: { enable: true, mode: "repulse" },
         },
         modes: {
-          push: { quantity: 4 },
+          push: { quantity: 0 },
           repulse: { distance: 200, duration: 0.4 },
         },
       },
@@ -51,7 +51,7 @@ export default function ParticlesScreenSaver() {
           direction: MoveDirection.none,
           outModes: { default: OutMode.out },
         },
-        number: { value: 90, density: { enable: true } },
+        number: { value: 80, density: { enable: true } },
         opacity: { value: 0.5 },
         shape: { type: "circle" },
         size: { value: { min: 1, max: 5 } },

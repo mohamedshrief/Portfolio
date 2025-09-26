@@ -64,12 +64,12 @@ export default function Experiences() {
               }}
             >
               {/* النقطة المتحركة في نهاية الخط */}
-              <div className="absolute w-12 h-12  shadow-lg -bottom-6  sm:left-1/2 -translate-1/2 ">
+              {/* <div className="absolute w-12 h-12  shadow-lg -bottom-6  sm:left-1/2 -translate-1/2 ">
                 <img
                   src={me}
                   className=" sm:rounded-full border w-full h-full"
                 />
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
