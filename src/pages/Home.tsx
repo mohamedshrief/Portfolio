@@ -5,7 +5,7 @@ import me from "../assets/portfolio.jpg";
 
 import { useState, useEffect } from "react";
 import ContactMe from "@/components/ui/ContactMe";
-import ParticlesScreenSaver from "@/components/ParticlesScreenSaver";
+// import ParticlesScreenSaver from "@/components/ParticlesScreenSaver";
 import { profileSVGPath } from "@/Data/svgPaths";
 
 /**
@@ -89,7 +89,7 @@ export default function Home() {
         id="home"
         className="min-h-screen  flex items-center justify-center text-white  relative pt-2 md:pt-20 px-4 sm:px-6 lg:px-8 "
       >
-        <ParticlesScreenSaver />
+        {/* <ParticlesScreenSaver /> */}
         <div className=" pt-20 md:pt-8 container mx-auto max-w-6xl relative z-10 ">
           {" "}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
