@@ -89,9 +89,9 @@ export default function Experiences() {
               }}
             >
               {/* النقطة المتحركة في نهاية الخط (حجم أصغر للشاشات الصغيرة) */}
-              <div className="absolute w-10 h-10 shadow-lg bottom-[-20px] -left-[12px] -translate-x-1/2">
+              {/* <div className="absolute w-10 h-10 shadow-lg bottom-[-20px] -left-[12px] -translate-x-1/2">
                 <img src={me} className=" rounded-l-lg border w-full h-full" />
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
