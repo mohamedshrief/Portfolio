@@ -49,7 +49,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               text="Features: "
               customStyle="text-md sm:text-lg lg:text-xl "
               icon="⚡"
-              delay={0.2}
             />
             {project.Features.map((feature, index) => (
               <li
@@ -64,7 +63,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             text="Technologies: "
             customStyle="text-md sm:text-lg lg:text-xl "
             icon="🛠️"
-            delay={0.2}
           />
           <ul className="grid grid-cols-2 pt-3 gap-2">
             {project.technologies.map((tech, index) => (
