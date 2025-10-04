@@ -1,106 +1,115 @@
-/**
- * مكون الكاروسيل مع تأثير Coverflow
- * يستخدم مكتبة Swiper.js لعرض الصور بتأثير ثلاثي الأبعاد
- * يحتوي على:
- * - 3 صور للمستخدم في أدوار مختلفة
- * - تأثير Coverflow ثلاثي الأبعاد
- * - تشغيل تلقائي للشرائح
- * - دعم السحب واللمس للتنقل
- */
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow } from "swiper/modules";
-// استيراد صور المستخدم
-import portfolio1 from "../assets/portfolio.jpg";
-import portfolio2 from "../assets/portfolio2.jpg";
-import portfolio3 from "../assets/portfolio3.jpg";
-// استيراد مكون الشعار المتحرك
-import Slogan from "./ui/slogan";
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
+import type { Swiper as SwiperClass } from "swiper";
+import { experiences } from "@/Data/data";
+import ExperienceCard from "./ExperienceCard";
 
-export default function CoverflowCarousel() {
-  // بيانات الشرائح - كل شريحة تحتوي على صورة ووصف
-  const slides = [
-    { id: 1, src: portfolio1, alt: "Slide 1", caption: "Software Engineer" },
-    { id: 2, src: portfolio2, alt: "Slide 2", caption: "Material Engineer" },
-    {
-      id: 3,
-      src: portfolio3,
-      alt: "Slide 3",
-      caption: "Medical Analysis Specialist",
-    },
-  ];
+// Swiper styles (you can keep them here or import them once in index.css / main.tsx)
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
+
+interface Slide {
+  id: string;
+  title?: string;
+  subtitle?: string;
+  img?: string;
+  bg?: string; // optional inline background (css value)
+  content?: React.ReactNode;
+}
+
+interface VerticalCarouselProps {
+  slides?: Slide[];
+  loop?: boolean;
+  heightClass?: string; // tailwind height class, e.g. 'h-screen' or 'h-[600px]'
+}
+
+export default function VerticalCarousel({
+  loop = true,
+  heightClass = "h-[700px]",
+}: VerticalCarouselProps) {
+  const [swiperInstance, setSwiperInstance] =
+    React.useState<SwiperClass | null>(null);
 
   return (
-    <section aria-label="Coverflow carousel" className="coverflow-section">
+    <div className={`relative w-full ${heightClass} select-none`}>
       <Swiper
-        // دالة يتم استدعاؤها عند تهيئة Swiper
-        onSwiper={(swiper) => {
-          setTimeout(() => {
-            swiper.autoplay.start(); // بدء التشغيل التلقائي بعد 500ms
-          }, 500);
-        }}
-        key={slides.length} // إعادة تهيئة Swiper عند تغيير عدد الشرائح
-        modules={[EffectCoverflow]} // الوحدات المطلوبة
-        effect="coverflow" // تأثير Coverflow ثلاثي الأبعاد
-        grabCursor={true} // تغيير المؤشر عند السحب
-        centeredSlides={true} // توسيط الشرائح
-        slidesPerView={"auto"} // عرض الشرائح تلقائياً
-        loop={true} // تكرار الشرائح
-        watchSlidesProgress={true} // مراقبة تقدم الشرائح
-        // إعدادات التشغيل التلقائي
-        // autoplay={{
-        //   delay: 2000, // تأخير 2 ثانية بين الشرائح
-        //   disableOnInteraction: false, // عدم إيقاف التشغيل عند التفاعل
-        //   pauseOnMouseEnter: false, // عدم إيقاف التشغيل عند التمرير
-        //   stopOnLastSlide: false, // عدم التوقف عند الشريحة الأخيرة
-        // }}
-        simulateTouch={true} // محاكاة اللمس
-        touchStartPreventDefault={false} // عدم منع اللمس الافتراضي
-        // إعدادات تأثير Coverflow
-        coverflowEffect={{
-          rotate: 50, // زاوية الدوران
-          stretch: 0, // التمدد
-          depth: 100, // العمق
-          modifier: 1, // معدل التعديل
-          slideShadows: false, // إزالة الظلال
-        }}
-        className="myCoverflowSwiper"
-        // نقاط التوقف للشاشات المختلفة
-        breakpoints={{
-          320: {
-            // الشاشات الصغيرة
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          640: {
-            // الشاشات المتوسطة
-            slidesPerView: "auto",
-            spaceBetween: 30,
-          },
-          1024: {
-            // الشاشات الكبيرة
-            slidesPerView: "auto",
-            spaceBetween: 40,
-          },
-        }}
+        direction="vertical"
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        onSwiper={setSwiperInstance}
+        slidesPerView={1}
+        spaceBetween={0}
+        pagination={{ clickable: true }}
+        mousewheel={{ forceToAxis: true }}
+        keyboard={{ enabled: true, onlyInViewport: true }}
+        loop={loop}
+        className="w-full h-full"
       >
-        {/* عرض الشرائح */}
-        {slides.map((s) => (
-          <SwiperSlide key={s.id} className="coverflow-slide">
-            <div className="slide-inner">
-              {/* الصورة مع ظل وردي */}
-              <img
-                className="shadow-3xl shadow-fuchsia-700"
-                src={s.src}
-                alt={s.alt}
-              />
-              {/* التسمية التوضيحية مع تأثير الشعار المتحرك */}
-              <div className="slide-caption text-center">
-                <Slogan sloganText={s.caption} />
-              </div>
+        {experiences.map((exp, index) => (
+          <SwiperSlide key={exp.id}>
+            <div className="flex items-center justify-center w-full h-full px-4 md:px-8">
+              <ExperienceCard exp={exp} index={index} />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+
+      {/* Custom vertical controls (up / down) */}
+      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-30">
+        <button
+          type="button"
+          onClick={() => swiperInstance?.slidePrev()}
+          aria-label="السابق"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-lg hover:scale-105 transition-transform"
+        >
+          {/* Up arrow SVG */}
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 15L12 9L18 15"
+              stroke="#111827"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => swiperInstance?.slideNext()}
+          aria-label="التالى"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-white/90 shadow-lg hover:scale-105 transition-transform"
+        >
+          {/* Down arrow SVG */}
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 9L12 15L6 9"
+              stroke="#111827"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Small hint/keyboard help (optional) */}
+      <div className="absolute left-4 bottom-4 text-xs text-white/90 z-20">
+        <div>Use mouse wheel / touch / ↑ ↓ / pagination</div>
+      </div>
+    </div>
   );
 }

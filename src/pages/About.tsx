@@ -1,10 +1,11 @@
 import { motion, useInView } from "framer-motion";
-import CoverflowCarousel from "@/components/carousel";
 import { useRef } from "react";
 import Title from "@/components/ui/Title";
 import AboutText from "@/components/about/AboutText";
 import AboutLayout from "@/components/about/AboutLayout";
 import ToDirection from "@/components/animations/ToDirection";
+// import CoverflowCarousel from "@/components/carousel";
+import VerticalCarousel from "@/components/carousel";
 // import Title from "@/components/ui/Title";
 
 /**
@@ -47,9 +48,9 @@ export default function About() {
                 duration: 1,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              className="order-1 lg:order-2"
+              className="order-2 "
             >
-              <CoverflowCarousel />
+              <VerticalCarousel />
             </motion.div>
           </AboutLayout>
         </div>

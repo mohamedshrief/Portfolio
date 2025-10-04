@@ -117,77 +117,49 @@
   animation: slideInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* -------------------------------------------------------------------------------- */
 /* Swiper */
-.myCoverflowSwiper {
-  padding: 40px 0;
-  overflow: visible;
-}
-.swiper-wrapper {
-  transition-timing-function: ease-out;
-}
-.swiper-slide {
-  transition: transform 0.3s ease;
-}
-.swiper-slide-duplicate {
-  display: block !important;
-}
-.swiper-slide-duplicate-prev,
-.swiper-slide-duplicate-next {
-  opacity: 1 !important;
-}
 
-/* Slide container */
-.coverflow-slide {
-  display: flex;
-  align-items: center;
+/* تحريك الـ pagination إلى الأسفل */
+.swiper-vertical > .swiper-pagination {
+  top: 15px !important;
+  /* bottom: 20px !important; المسافة من أسفل */
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: row !important;
+  display: flex !important;
+  flex-direction: row !important;
   justify-content: center;
-  transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  cursor: grab;
-  transform: scale(0.9);
-  opacity: 0.7;
-  width: 100%;
-  max-width: 360px;
-}
-.coverflow-slide:hover {
-  transform: scale(0.95);
-  opacity: 0.9;
+  align-items: center; /* خليها صف أفقي بدل عمودي */
+  gap: 8px;
 }
 
-/* Inner slide */
-.slide-inner {
-  width: 100%;
-  height: 350px;
-  background: transparent;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-end;
-  transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  padding: 10px;
-  z-index: 20;
+/* شكل النقاط */
+.swiper-pagination-bullet {
+  background-color: white !important;
+  opacity: 0.6;
+  width: 15px;
+  height: 15px;
+  margin: 0 !important;
+  transition: all 0.3s ease;
 }
 
-/* Image */
-.slide-inner img {
-  border-radius: 50px;
-  display: block;
-  width: 100%;
-  height: calc(100% - 80px);
-  object-fit: cover;
-  object-position: center;
-  pointer-events: none;
-  transition: all 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: brightness(1.2) contrast(1.2);
-  border: 2px solid #7c3aed;
-  z-index: 25;
-  animation: borderGlow 1.5s ease-in-out infinite;
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-image: url("/src/assets/portfolio.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid rgb(154, 79, 154);
+  transform: scale(2);
 }
-.slide-inner:hover img {
-  filter: brightness(1.1) contrast(1.1);
-  transform: scale(1.06);
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #06b6d4 !important; /* اللون النشط */
 }
+
+/* -------------------------------------------------------------------------------- */
 
 /* Border animation */
 @keyframes borderGlow {
@@ -201,97 +173,6 @@
     border-color: #06b6d4;
     box-shadow: 0 0 20px rgba(16, 146, 169, 0.8);
   }
-}
-
-/* Caption */
-.slide-caption {
-  padding: 14px 16px;
-  font-size: 22px;
-  font-weight: 900;
-  position: relative;
-  z-index: 30;
-  transition: all 300ms ease;
-  margin-top: 16px;
-}
-.slide-inner:hover .slide-caption {
-  background: rgba(0, 0, 0, 0.8);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Active slide */
-.swiper-slide-active .slide-inner {
-  transform: translateY(-8px) scale(1.02);
-  animation: activeSlide 4s ease-in-out infinite;
-}
-@keyframes activeSlide {
-  0%,
-  100% {
-    transform: translateY(-8px) scale(1.02);
-  }
-  50% {
-    transform: translateY(-12px) scale(1.05);
-  }
-}
-.swiper-slide-active .slide-inner img {
-  filter: brightness(1.2) contrast(1.02);
-}
-
-/* Neighbors */
-.swiper-slide-prev .slide-inner,
-.swiper-slide-next .slide-inner {
-  filter: saturate(0.8) contrast(0.9);
-  transform: scale(0.85);
-  opacity: 0.6;
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-  .coverflow-section {
-    padding: 16px;
-  }
-  .coverflow-slide {
-    width: 100% !important;
-    max-width: 100%;
-  }
-  .slide-inner {
-    height: 420px;
-  } /* أكبر للموبايل */
-  .slide-caption {
-    font-size: 18px;
-    padding: 12px 14px;
-  }
-}
-@media (min-width: 641px) and (max-width: 1023px) {
-  .coverflow-slide {
-    max-width: 320px;
-  }
-  .slide-inner {
-    height: 380px;
-  }
-  .slide-caption {
-    font-size: 20px;
-    padding: 14px 16px;
-  }
-}
-@media (min-width: 1024px) {
-  .coverflow-slide {
-    max-width: 360px;
-  }
-  .slide-inner {
-    height: 420px;
-  }
-  .slide-caption {
-    font-size: 22px;
-    padding: 14px 16px;
-  }
-}
-
-/* Accessibility */
-.swiper-container :focus,
-.swiper-slide :focus {
-  outline: 3px solid rgba(139, 92, 246, 0.3);
-  outline-offset: 3px;
 }
 
 /* Entrance animation */
@@ -311,9 +192,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  /* width: !important; */
-  /* height: 100vh !important; */
-
   /* Ensure particles are behind other content */
 }
 

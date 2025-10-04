@@ -1,12 +1,5 @@
-// استيراد مكتبة Framer Motion للانيميشن
-import { motion, useInView } from "framer-motion";
 import ImpulseBorder from "./animations/ImpulseBorder";
-import { useRef } from "react";
-// أيقونات تقريبية للمهارات من lucide-react
 
-/**
- * واجهة البيانات الخاصة ببطاقة التجربة المهنية
- */
 interface ISkill {
   name: string;
   icon: null | React.ReactNode;
@@ -36,40 +29,8 @@ interface IProps {
  * - مهارات تقنية مع تأثيرات hover
  */
 export default function ExperienceCard({ exp, index }: IProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <motion.div
-      ref={ref}
-      key={exp.id}
-      initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }} // انيميشن دخول من اليسار أو اليمين بالتناوب
-      animate={
-        isInView
-          ? { opacity: 1, x: 0 }
-          : { opacity: 0, x: index % 2 === 0 ? -150 : 150 }
-      }
-      transition={{ duration: 0.5 }}
-      className="relative  flex items-start lg:grid lg:grid-cols-2 lg:gap-8"
-    >
-      {/* التاريخ - على اليسار في الشاشات الصغيرة، متناوب في الشاشات الكبيرة */}
-      <div
-        className={` w-12  lg:w-auto flex-shrink-0 text-right pr-6 lg:pr-0 ${
-          index % 2 === 0 ? "lg:col-start-1" : "lg:col-start-2"
-        }`}
-      >
-        <p className="text-gray-400 text-sm lg:text-base font-medium lg:text-left">
-          {exp.period}
-        </p>
-      </div>
-
-      {/* خط يصل من التجربة إلى الخط الرئيسي - للشاشات الكبيرة */}
-      <div className="hidden lg:block absolute left-1/2 top-8 w-px h-8 bg-gradient-to-b from-cyan-400/60 to-transparent transform -translate-x-1/2"></div>
-
-      {/* خط يصل من التجربة إلى الخط الرئيسي - للشاشات الصغيرة */}
-      <div className="lg:hidden absolute left-8 top-8 w-px h-8 bg-gradient-to-b from-cyan-400/60 to-transparent"></div>
-
-      {/* المحتوى - على اليمين في الشاشات الصغيرة، متناوب في الشاشات الكبيرة */}
+    <div key={exp.id} className="relative  flex items-center text-center">
       <div
         className={`flex-1 lg:pl-0 ${
           index % 2 === 0 ? "lg:col-start-2" : "lg:col-start-1"
@@ -143,7 +104,11 @@ export default function ExperienceCard({ exp, index }: IProps) {
             </div>
           </div>
         </ImpulseBorder>
+        <span className="absolute -bottom-8 right-10 text-md text-gray-400">
+          {" "}
+          {exp.period}{" "}
+        </span>
       </div>
-    </motion.div>
+    </div>
   );
 }

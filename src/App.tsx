@@ -4,7 +4,7 @@ import About from "./pages/About";
 import Footer from "./pages/Footer";
 import Home from "./pages/Home";
 import Works from "./pages/Works";
-import Experiences from "./pages/experiences";
+// import Experiences from "./pages/experiences";
 import aboutSecBg from "./assets/sectionBg.jpg";
 import worksBg from "./assets/worksbg.webp";
 
@@ -23,7 +23,7 @@ function App() {
           {/* overlay */}
           <div className="absolute inset-0 bg-black/90"></div>
           <About />
-          <Experiences />
+          {/* <Experiences /> */}
         </section>
         <TechMarquee direction="toLeft" />
         <TechMarquee direction="toRight" />
