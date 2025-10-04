@@ -80,10 +80,10 @@
   .about-subtitle .star {
     color: #8b5cf6;
     text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
-    animation: starTwinkle 2s ease-in-out infinite;
+    /* animation: starTwinkle 2s ease-in-out infinite; */
   }
 
-  @keyframes starTwinkle {
+  /* @keyframes starTwinkle {
     0%,
     100% {
       opacity: 1;
@@ -91,7 +91,7 @@
     50% {
       opacity: 0.7;
     }
-  }
+  } */
 }
 
 /* ---------------- Variables ---------------- */
@@ -122,7 +122,7 @@
 
 /* تحريك الـ pagination إلى الأسفل */
 .swiper-vertical > .swiper-pagination {
-  top: 15px !important;
+  top: 18px !important;
   /* bottom: 20px !important; المسافة من أسفل */
   left: 50%;
   transform: translateX(-50%);
