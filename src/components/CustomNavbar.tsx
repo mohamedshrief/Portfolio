@@ -25,7 +25,6 @@ function useIntersectionObserver() {
     const sections = [
       { id: "home", threshold: 0.3 }, // القسم الرئيسي - يظهر عند 30% من الرؤية
       { id: "about", threshold: 0.3 }, // قسم "حولي" - يظهر عند 30% من الرؤية
-      { id: "experiences", threshold: 0.3 }, // قسم "التجارب" - يظهر عند 30% من الرؤية
       { id: "services", threshold: 0 }, // قسم "الخدمات" - يظهر عند 30% من الرؤية
       { id: "contact", threshold: 0.3 }, // قسم "التواصل" - يظهر عند 30% من الرؤية
     ];
@@ -186,7 +185,6 @@ export default function Navbar() {
                   }}
                   transition={{
                     duration: 1.5,
-                    repeat: Infinity,
                     delay: i * 0.15, // تأخير متدرج لكل جسيم
                     ease: "easeInOut",
                   }}
@@ -222,7 +220,6 @@ export default function Navbar() {
               }}
               transition={{
                 duration: 3,
-                repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
@@ -231,7 +228,6 @@ export default function Navbar() {
                 {[
                   { href: "#home", text: "Home" },
                   { href: "#about", text: "About" },
-                  { href: "#experiences", text: "Experiences" },
                   { href: "#services", text: "Services" },
                 ].map((item) => (
                   <CustomNavLink
@@ -259,13 +255,8 @@ export default function Navbar() {
               scale: 0.9, // تصغير عند النقر
               rotate: [0, 15, -15, 0], // حركة اهتزاز عند النقر
             }}
-            animate={{
-              filter: "drop-shadow(0 0 20px #8B5CF6)", // توهج مستمر
-              y: [0, -2, 0], // حركة طفو خفيفة
-            }}
             transition={{
               duration: 2,
-              repeat: Infinity,
               ease: "easeInOut",
             }}
           >
@@ -274,21 +265,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
             >
               {/* تأثير البريق السحري */}
-              <motion.div
-                className="absolute inset-0"
-                animate={{
-                  background: [
-                    "radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)",
-                    "radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.3) 0%, transparent 50%)",
-                    "radial-gradient(circle at 40% 80%, rgba(139, 92, 246, 0.3) 0%, transparent 50%)",
-                  ],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+              <div className="absolute inset-0" />
 
               {/* أيقونة العصا مع التوهج والدوران */}
               <motion.div
@@ -304,20 +281,7 @@ export default function Navbar() {
               </motion.div>
 
               {/* تأثير ذيل التعويذة */}
-              <motion.div
-                className="absolute -right-2 -top-2 w-4 h-4 bg-yellow-300 rounded-full opacity-0"
-                animate={{
-                  x: [0, 20, 40], // حركة أفقية
-                  y: [0, -10, -20], // حركة عمودية
-                  opacity: [0, 1, 0], // ظهور واختفاء
-                  scale: [0, 1, 0], // تكبير وتصغير
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: 0.5,
-                }}
-              />
+              <div className="absolute -right-2 -top-2 w-4 h-4 bg-yellow-300 rounded-full opacity-0" />
             </Button>
           </motion.div>
         </div>
@@ -369,24 +333,12 @@ export default function Navbar() {
               }}
               transition={{
                 duration: 20,
-                repeat: Infinity,
                 ease: "linear",
               }}
             />
 
             {/* تأثير موجات الطاقة */}
-            <motion.div
-              className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
-              animate={{
-                scaleX: [0, 1, 0], // توسع وانكماش
-                opacity: [0, 1, 0], // ظهور واختفاء
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
 
             {/* زر الإغلاق السحري - نمط فولدمورت */}
             <motion.div
@@ -410,7 +362,6 @@ export default function Navbar() {
                   }}
                   transition={{
                     duration: 1.5,
-                    repeat: Infinity,
                     ease: "easeInOut",
                   }}
                 />
@@ -434,7 +385,6 @@ export default function Navbar() {
               {[
                 { href: "#home", text: "Home", icon: "🏠" },
                 { href: "#about", text: "About", icon: "👤" },
-                { href: "#experiences", text: "Experiences", icon: "💼" },
                 { href: "#services", text: "Services", icon: "⚡" },
               ].map((item, index) => (
                 <motion.div
