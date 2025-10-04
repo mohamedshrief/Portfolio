@@ -26,7 +26,7 @@ interface VerticalCarouselProps {
 }
 
 export default function VerticalCarousel({
-  loop = true,
+  // loop = true,
   heightClass = "h-[700px]",
 }: VerticalCarouselProps) {
   const [swiperInstance, setSwiperInstance] =
@@ -43,7 +43,7 @@ export default function VerticalCarousel({
         pagination={{ clickable: true }}
         mousewheel={{ forceToAxis: true }}
         keyboard={{ enabled: true, onlyInViewport: true }}
-        loop={loop}
+        // loop={loop}
         className="w-full h-full"
       >
         {experiences.map((exp, index) => (
