@@ -1,4 +1,4 @@
-import Logo from "@/components/footer/Logo";
+import MainLogo from "@/components/Navbar/MainLogo";
 import bg from "../assets/footer/cta.avif";
 import wings from "../assets/footer/wings.svg";
 import ToDirection from "@/components/animations/ToDirection";
@@ -20,7 +20,7 @@ export default function Footer() {
           className=" bg-contain bg-center bg-no-repeat w-[350px] h-[130px] mx-auto rounded-full mb-4 flex items-center justify-center"
           style={{ backgroundImage: `url(${wings})` }}
         >
-          <Logo />
+          <MainLogo />
         </div>
         <div className="relative overflow-hidden">
           <ToDirection direction="left" repeat={false}>
