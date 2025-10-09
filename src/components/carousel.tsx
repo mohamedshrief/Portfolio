@@ -33,7 +33,12 @@ export default function VerticalCarousel({
     React.useState<SwiperClass | null>(null);
 
   return (
-    <div className={`relative w-full ${heightClass} select-none`}>
+    <div
+      className={`relative w-full ${heightClass} select-none overflow-hidden rounded-[20px]`}
+    >
+      <div className="absolute inset-0 rounded-[20px] p-[4px] bg-gradient-to-b from-yellow-700 via-yellow-500 to-yellow-300 shadow-[0_0_30px_#FFD700]">
+        <div className="absolute inset-[4px] bg-gradient-to-b from-[#fff9e6]/20 to-[#000]/60 rounded-[16px]" />
+      </div>
       <Swiper
         direction="vertical"
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
@@ -44,7 +49,7 @@ export default function VerticalCarousel({
         mousewheel={{ forceToAxis: true }}
         keyboard={{ enabled: true, onlyInViewport: true }}
         // loop={loop}
-        className="w-full h-full"
+        className="w-full h-full absolute inset-0"
       >
         {experiences.map((exp, index) => (
           <SwiperSlide key={exp.id}>

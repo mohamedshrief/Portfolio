@@ -31,7 +31,7 @@ export default function WorksNavBar({
 
   return (
     <>
-      <ul className=" w-full lg:w-2/3 px-10 flex justify-around gap-3 sm:gap-6 text-md sm:text-2xl font-extrabold  cursor-pointer border border-cyan-300 p-3 rounded-2xl mx-auto  ">
+      <ul className=" w-full lg:w-2/3 px-10 flex justify-around gap-3 sm:gap-6 text-sm sm:text-2xl font-extrabold  cursor-pointer border border-cyan-300 p-3 rounded-2xl mx-auto  ">
         {renderedListItems}
       </ul>
     </>

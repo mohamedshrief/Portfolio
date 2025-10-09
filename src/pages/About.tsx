@@ -23,7 +23,7 @@ export default function About() {
   return (
     <div
       id="about"
-      className="min-h-screen text-white px-4 sm:px-6 lg:px-8 relative pt-20"
+      className="min-h-screen text-white px-4 sm:px-6 lg:px-8 relative py-20"
     >
       <ToDirection direction="up" duration={0.4}>
         <div className="container mx-auto max-w-6xl relative z-10">
