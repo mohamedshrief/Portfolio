@@ -3,76 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Download, Github, Linkedin, Facebook } from "lucide-react";
 import me from "../assets/portfolio.jpg";
 
-import { useState, useEffect } from "react";
-import ContactMe from "@/components/ui/ContactMe";
-// import ParticlesScreenSaver from "@/components/ParticlesScreenSaver";
-// import { profileSVGPath } from "@/Data/svgPaths";
-
-/**
- * مكون تأثير الكتابة الآلية
- * يعرض قائمة من الكلمات مع تأثير كتابة ومسح متكرر
- * يشبه تأثير الكتابة الآلية في المواقع الحديثة
- */
-function TypingEffect({
-  words, // مصفوفة الكلمات المراد عرضها
-  className, // كلاسات CSS إضافية
-}: {
-  words: string[];
-  className?: string;
-}) {
-  // حالة الفهرس الحالي للكلمة
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  // حالة النص الحالي المعروض
-  const [currentText, setCurrentText] = useState("");
-  // حالة تحديد ما إذا كنا في وضع المسح أم الكتابة
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentWord = words[currentWordIndex];
-
-    if (isDeleting) {
-      // تأثير المسح - حذف حرف واحد في كل مرة
-      if (currentText.length > 0) {
-        const timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1)); // حذف آخر حرف
-        }, 100);
-        return () => clearTimeout(timeout);
-      } else {
-        // انتهاء المسح، الانتقال للكلمة التالية
-        setIsDeleting(false);
-        setCurrentWordIndex((prev) => (prev + 1) % words.length);
-      }
-    } else {
-      // تأثير الكتابة - إضافة حرف واحد في كل مرة
-      if (currentText.length < currentWord.length) {
-        const timeout = setTimeout(() => {
-          setCurrentText(currentWord.slice(0, currentText.length + 1)); // إضافة حرف جديد
-        }, 150);
-        return () => clearTimeout(timeout);
-      } else {
-        // انتهاء الكتابة، انتظار قبل بدء المسح
-        const timeout = setTimeout(() => {
-          setIsDeleting(true);
-        }, 2000);
-        return () => clearTimeout(timeout);
-      }
-    }
-  }, [currentText, currentWordIndex, isDeleting, words]);
-
-  return (
-    <h3 className={`${className} font-semibold text-white/90`}>
-      <span className="text-3xl lg:text-4xl">{currentText}</span>
-      {/* مؤشر الكتابة المتلألئ */}
-      <motion.span
-        className="text-3xl lg:text-4xl text-cyan-400 ml-1"
-        animate={{ opacity: [1, 0] }} // تلألؤ المؤشر
-        transition={{ duration: 0.8, repeat: Infinity }}
-      >
-        |
-      </motion.span>
-    </h3>
-  );
-}
+// import ContactMe from "@/components/ui/ContactMe";
+import { TypingEffectJobDesc } from "@/components/Home/TypingEffectJobDesc";
+import { ContactMeLink } from "@/components/ContactMeLink";
 
 /**
  * مكون الصفحة الرئيسية
@@ -196,7 +129,7 @@ export default function Home() {
                 />
 
                 {/* جسيمات عائمة حول الصورة */}
-                {[...Array(8)].map((_, i) => (
+                {/* {[...Array(8)].map((_, i) => (
                   <motion.div
                     key={i}
                     className="absolute w-1.5 h-1.5 bg-cyan-400 rounded-full z-30"
@@ -216,7 +149,7 @@ export default function Home() {
                       ease: "easeInOut",
                     }}
                   />
-                ))}
+                ))} */}
               </motion.div>
             </motion.div>
 
@@ -228,68 +161,43 @@ export default function Home() {
               className="space-y-8 text-center lg:text-left"
             >
               {/* التحية */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <h2 className="text-2xl text-cyan-400 font-medium mb-1">
-                  Hello, I'm
-                </h2>
-              </motion.div>
+
+              <h2 className="text-2xl text-cyan-400 font-medium mb-1">
+                Hello, I'm
+              </h2>
 
               {/* الاسم */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-              >
-                <h1 className="text-6xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  Mohamed Abd El-Salam
-                </h1>
-              </motion.div>
+
+              <h1 className="text-6xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                Mohamed Abd El-Salam
+              </h1>
 
               {/* المسمى الوظيفي مع تأثير الكتابة الآلية */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.9 }}
-              >
-                <TypingEffect
-                  words={[
-                    "Full Stack Developer", // مطور متكامل
-                    "Frontend Developer", // مطور واجهة أمامية
-                    "Backend Developer", // مطور خلفية
-                    "React Developer", // مطور React
-                    "Node.js Developer", // مطور Node.js
-                    "Laravel Developer", // مطور Laravel
-                    "Problem Solver", // محلل مشاكل
-                    "Creative Developer", // مطور مبدع
-                  ]}
-                  className="text-3xl lg:text-4xl"
-                />
-              </motion.div>
+
+              <TypingEffectJobDesc
+                words={[
+                  "Full Stack Developer", // مطور متكامل
+                  "Frontend Developer", // مطور واجهة أمامية
+                  "Backend Developer", // مطور خلفية
+                  "React Developer", // مطور React
+                  "Node.js Developer", // مطور Node.js
+                  "Laravel Developer", // مطور Laravel
+                  "Problem Solver", // محلل مشاكل
+                  "Creative Developer", // مطور مبدع
+                ]}
+                className="text-3xl lg:text-4xl"
+              />
 
               {/* الوصف */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-              >
-                <p className="text-lg text-white/70 mx-auto lg:mx-0 leading-relaxed max-w-lg">
-                  Passionate developer creating innovative digital experiences
-                  with cutting-edge technologies. Specializing in modern web
-                  development and user experience design.
-                </p>
-              </motion.div>
+
+              <p className="text-lg text-white/70 mx-auto lg:mx-0 leading-relaxed max-w-lg">
+                Passionate developer creating innovative digital experiences
+                with cutting-edge technologies. Specializing in modern web
+                development and user experience design.
+              </p>
 
               {/* أزرار الدعوة للعمل */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.3 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 {/* زر تحميل السيرة الذاتية */}
                 <Button
                   className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 hover:scale-105"
@@ -309,16 +217,11 @@ export default function Home() {
                 </Button>
 
                 {/* مكون قائمة التواصل */}
-                <ContactMe />
-              </motion.div>
+                <ContactMeLink />
+              </div>
 
               {/* روابط وسائل التواصل الاجتماعي */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1.5 }}
-                className="flex justify-center lg:justify-start gap-6 pt-4"
-              >
+              <div className="flex justify-center lg:justify-start gap-6 pt-4">
                 {[
                   {
                     icon: Github,
@@ -346,7 +249,7 @@ export default function Home() {
                     <social.icon className="w-6 h-6" />
                   </motion.a>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>

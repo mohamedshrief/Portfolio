@@ -9,7 +9,19 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import SocialMediaTab from "./ui/SocialMediaTab";
 
-export function ContactMeLink() {
+interface IProps {
+  initColor1?: string;
+  initColor2?: string;
+  hoverColor1?: string;
+  hoverColor2?: string;
+}
+
+export function ContactMeLink({
+  initColor1 = "#06b6d4",
+  initColor2 = "#9333ea",
+  hoverColor1 = "#9333ea",
+  hoverColor2 = "#06b6d4",
+}: IProps) {
   const [isHover, setIsHover] = useState(false);
 
   return (
@@ -21,8 +33,8 @@ export function ContactMeLink() {
           animate={{
             scale: isHover ? 1.1 : 1,
             background: isHover
-              ? "linear-gradient(to right, #06b6d4, #9333ea)"
-              : "linear-gradient(to right, #9333ea, #06b6d4)",
+              ? `linear-gradient(to right, ${hoverColor1}, ${hoverColor2})`
+              : `linear-gradient(to right, ${initColor1}, ${initColor2})`,
             boxShadow: isHover
               ? "0px 0px 25px rgba(147, 51, 234, 0.5), 0px 0px 35px rgba(6, 182, 212, 0.4)"
               : "0px 0px 0px rgba(0,0,0,0)",
@@ -44,7 +56,7 @@ export function ContactMeLink() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: -10 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="w-[380px] lg:w-[620px] p-5 bg-neutral-900 text-white rounded-xl shadow-xl border border-neutral-700"
+          className="w-[340px] lg:w-[620px] p-5 bg-neutral-900 text-white rounded-xl shadow-xl border border-neutral-700"
         >
           <SocialMediaTab />
           {/* Tabs */}

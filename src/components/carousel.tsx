@@ -36,7 +36,7 @@ export default function VerticalCarousel({
     <div
       className={`relative w-full ${heightClass} select-none overflow-hidden rounded-[20px]`}
     >
-      <div className="absolute inset-0 rounded-[20px] p-[4px] bg-gradient-to-b from-yellow-700 via-yellow-500 to-yellow-300 shadow-[0_0_30px_#FFD700]">
+      <div className="absolute inset-0 rounded-[20px] p-[4px] bg-gradient-to-b from-cyan-600 via-cyan-700 to-violet-700 shadow-[0_0_30px_#FFD700]">
         <div className="absolute inset-[4px] bg-gradient-to-b from-[#fff9e6]/20 to-[#000]/60 rounded-[16px]" />
       </div>
       <Swiper
