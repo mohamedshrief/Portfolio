@@ -127,29 +127,6 @@ export default function Home() {
                     ease: "easeInOut",
                   }}
                 />
-
-                {/* جسيمات عائمة حول الصورة */}
-                {/* {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-1.5 h-1.5 bg-cyan-400 rounded-full z-30"
-                    style={{
-                      left: `${20 + i * 10}%`, // موضع أفقي متدرج
-                      top: `${25 + (i % 3) * 25}%`, // موضع عمودي متغير
-                    }}
-                    animate={{
-                      y: [0, -15, 0], // حركة عمودية
-                      opacity: [0, 1, 0], // ظهور واختفاء
-                      scale: [0, 1, 0], // تكبير وتصغير
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      delay: i * 0.2, // تأخير متدرج لكل جسيم
-                      ease: "easeInOut",
-                    }}
-                  />
-                ))} */}
               </motion.div>
             </motion.div>
 

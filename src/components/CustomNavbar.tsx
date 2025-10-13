@@ -125,31 +125,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-{
-  /* جسيمات كهربائية تتحرك عبر الحروف */
-}
-{
-  /* {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-                  style={{
-                    left: `${10 + i * 10}%`, // موضع أفقي متدرج
-                    top: `${30 + (i % 3) * 20}%`, // موضع عمودي متغير
-                  }}
-                  animate={{
-                    x: [0, 20, 0], // حركة أفقية
-                    y: [0, -5, 0], // حركة عمودية
-                    opacity: [0, 1, 0], // ظهور واختفاء
-                    scale: [0, 1.2, 0], // تكبير وتصغير
-                    filter: "drop-shadow(0 0 8px #00ffff)", // توهج سماوي
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    delay: i * 0.15, // تأخير متدرج لكل جسيم
-                    ease: "easeInOut",
-                  }}
-                />
-              ))} */
-}
