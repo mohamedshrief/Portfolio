@@ -54,6 +54,8 @@ export const projectsData = [
       "animations",
     ],
     imageSrc: cosmos,
+    liveDemo: "https://cosmos-store-e-commerce.vercel.app/",
+    githubRepo: "https://github.com/mohamedshrief/Cosmos-Store-E-Commerce",
   },
   {
     id: 2,
@@ -94,6 +96,8 @@ export const projectsData = [
       "state management via Redux Toolkit",
     ],
     imageSrc: vs,
+    liveDemo: "https://vs-code-clone-jltk.vercel.app/",
+    githubRepo: "https://github.com/mohamedshrief/VS-Code-Clone",
   },
   {
     id: 3,
@@ -143,6 +147,8 @@ export const projectsData = [
       "TypeScript for type safety",
     ],
     imageSrc: crud,
+    liveDemo: "https://react-memoizes-crud-system-pa7h.vercel.app/",
+    githubRepo: "https://github.com/mohamedshrief/React-Memoizes-CRUD-system",
   },
   {
     id: 4,
@@ -182,6 +188,8 @@ export const projectsData = [
       "server actions for data handling",
     ],
     imageSrc: meals,
+    liveDemo: "https://05-onwards-foodies-starting-project-omega.vercel.app/",
+    githubRepo: "https://github.com/mohamedshrief/NextLevel-Food",
   },
   {
     id: 5,
@@ -216,7 +224,9 @@ export const projectsData = [
       "Dynamic layouts",
       "Modular architecture",
     ],
-    imageSrc: advancedNextRouting, // خليها متغير عندك زى meals
+    imageSrc: advancedNextRouting,
+    liveDemo: "https://advanced-next-routing.vercel.app/",
+    githubRepo: "https://github.com/mohamedshrief/Advanced-Next-Routing",
   },
 
   {
@@ -261,6 +271,9 @@ export const projectsData = [
       "Cloud storage integration",
       "Optimized database operations",
     ],
-    imageSrc: nextPosts, // برضه متغير عندك زى meals
+    imageSrc: nextPosts,
+    liveDemo:
+      "https://posts-system-iff8rryou-mohamed-abd-el-salams-projects.vercel.app/",
+    githubRepo: "https://github.com/mohamedshrief/Posts-system",
   },
 ];

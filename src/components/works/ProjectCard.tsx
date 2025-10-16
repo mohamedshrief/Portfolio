@@ -17,6 +17,8 @@ export interface Project {
   imageSrc: string;
   Features: string[];
   technologies: { name: string; icon: string }[];
+  liveDemo: string;
+  githubRepo: string;
 }
 
 interface ProjectCardProps {
@@ -26,7 +28,25 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <FadeInWithExpantion>
-      <Card className="bg-gray-900 dark:bg-gray-800 text-gray-900 h-full dark:text-gray-100 shadow-lg shadow-indigo-700/50 border border-gray-300 dark:border-gray-700">
+      <Card className="group relative bg-gray-900 dark:bg-gray-800 text-gray-900 h-full dark:text-gray-100 shadow-lg shadow-indigo-700/50 border border-gray-300 dark:border-gray-700">
+        <div className="absolute  opacity-0 right-0 duration-400 group-hover:opacity-100 w-1/3 h-1/2 group-hover:right-3 top-20 flex flex-col justify-center items-center bg-gray-800/30 backdrop-blur-md rounded-2xl border border-gray-300 dark:border-gray-700 text-gray-100 text-sm font-medium p-2 gap-4">
+          <button
+            className={`px-4 py-3 rounded-xl from-emerald-300 to-indigo-300 hover:from-cyan-500 hover:to-transparent  bg-gradient-to-br  text-black text-md font-bold shadow-sm backdrop-blur-sm transition-all duration-300 ease-out   hover:text-white hover:shadow-cyan-400/20 hover:ring-1 hover:ring-cyan-400/30 hover:scale-[1.04] hover:-translate-y-[2px] `}
+          >
+            🔍
+            <a href={project.liveDemo} target="_blank">
+              Live Demo
+            </a>
+          </button>
+          <button
+            className={`px-3 py-3 rounded-xl from-cyan-500 to-transparent hover:from-emerald-300 hover:to-indigo-300  bg-gradient-to-br hover:text-black  text-white text-md font-bold shadow-sm backdrop-blur-sm transition-all duration-300 ease-out hover:shadow-cyan-400/20 hover:ring-1 hover:ring-cyan-400/30 hover:scale-[1.04] hover:-translate-y-[2px] `}
+          >
+            🔍
+            <a href={project.githubRepo} target="_blank">
+              💻Github Repo
+            </a>
+          </button>
+        </div>
         <CardHeader>
           <CardTitle>
             <CardHeader1
